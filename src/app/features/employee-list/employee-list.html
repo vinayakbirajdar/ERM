@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="header-row">
+    <h2>Employee Directory</h2>
+    <a routerLink="/employees/add" class="add-btn">+ Add Employee</a>
+  </div>
+
+  <div class="filter-row">
+    <input
+      type="text"
+      placeholder="🔍 Search Employee..."
+      [(ngModel)]="searchText"
+      (input)="filterEmployees()"
+      class="search-input"
+    />
+
+    <select
+      [(ngModel)]="selectedStatus"
+      (change)="filterEmployees()"
+      class="filter-select"
+    >
+      <option value="">All Status</option>
+      <option value="active">Active</option>
+      <option value="inactive">Inactive</option>
+    </select>
+  </div>
+
+  <table class="employee-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Designation</th>
+        <th>Salary</th>
+        <th>Joining Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let emp of filteredEmployees">
+        <td>{{ emp.name | titlecase }}</td>
+        <td>{{ emp.department }}</td>
+        <td>{{ emp.designation }}</td>
+        <td>{{ emp.salary | currency:'INR':'symbol':'1.0-0' }}</td>
+        <td>{{ emp.joiningDate | date:'dd MMM yyyy' }}</td>
+        <td>
+          <span [class]="emp.isActive ? 'status-active' : 'status-inactive'">
+            {{ emp.isActive ? 'Active' : 'Inactive' }}
+          </span>
+        </td>
+        <td class="actions">
+          <a [routerLink]="['/deatils', emp.id]" class="view-btn">View</a>
+          <a [routerLink]="['/edit', emp.id]" class="edit-btn">Edit</a>
+          <button (click)="onDelete(emp.id)" class="delete-btn">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="employees.length === 0" class="empty-state">
+    No employees found.
+  </div>
+</div>
