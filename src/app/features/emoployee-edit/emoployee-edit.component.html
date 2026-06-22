@@ -1,0 +1,47 @@
+<div class="edit-employee-container">
+  <div class="edit-card">
+    <h2>Edit Employee</h2>
+
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" [(ngModel)]="employeeDetails.name" />
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="employeeDetails.email" />
+    </div>
+
+    <div class="form-group">
+      <label>Department</label>
+      <input type="text" [(ngModel)]="employeeDetails.department" />
+    </div>
+
+    <div class="form-group">
+      <label>Designation</label>
+      <input type="text" [(ngModel)]="employeeDetails.designation" />
+    </div>
+
+    <div class="form-group">
+      <label>Salary</label>
+      <input type="number" [(ngModel)]="employeeDetails.salary" />
+    </div>
+
+    <div class="form-group">
+      <label>Joining Date</label>
+      <input type="date" [(ngModel)]="employeeDetails.joiningDate" />
+    </div>
+
+    <div class="form-group checkbox-group">
+      <label>
+        <input type="checkbox" [(ngModel)]="employeeDetails.isActive" />
+        Active Employee
+      </label>
+    </div>
+
+    <div class="actions">
+      <button class="btn-primary" (click)="saveEmployee()">Save</button>
+      <button class="btn-secondary" (click)="goBack()">Cancel</button>
+    </div>
+  </div>
+</div>
