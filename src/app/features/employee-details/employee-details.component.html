@@ -1,0 +1,69 @@
+<div class="employee-details-container" *ngIf="employeeDetails; else notFound">
+  <div class="employee-card">
+    <div class="header">
+      <div class="avatar">
+        {{ employeeDetails.name.charAt(0) }}
+      </div>
+
+      <div class="info">
+        <h2>{{ employeeDetails.name }}</h2>
+        <p>{{ employeeDetails.designation }}</p>
+      </div>
+
+      <span
+        class="status"
+        [class.active]="employeeDetails.isActive"
+        [class.inactive]="!employeeDetails.isActive"
+      >
+        {{ employeeDetails.isActive ? "Active" : "Inactive" }}
+      </span>
+    </div>
+
+    <div class="details-grid">
+      <div class="detail-item">
+        <label>Employee ID</label>
+        <span>{{ employeeDetails.id }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Email</label>
+        <span>{{ employeeDetails.email }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Department</label>
+        <span>{{ employeeDetails.department }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Designation</label>
+        <span>{{ employeeDetails.designation }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Salary</label>
+        <span>₹ {{ employeeDetails.salary | number }}</span>
+      </div>
+
+      <div class="detail-item">
+        <label>Joining Date</label>
+        <span>{{ employeeDetails.joiningDate | date : "dd MMM yyyy" }}</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-primary" (click)="editEmployee()">
+        Edit Employee
+      </button>
+      <button class="btn-secondary" (click)="goBack()">Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ NOW it's a SIBLING of the outer div, not nested inside it -->
+<ng-template #notFound>
+  <div class="empty-state">
+    <p>Employee not found.</p>
+    <a routerLink="/employees">Back to list</a>
+  </div>
+</ng-template>
