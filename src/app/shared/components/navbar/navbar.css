@@ -1,0 +1,48 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-xl);
+  background: var(--color-bg-dark);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-lg);
+  font-weight: bold;
+}
+
+.logo-icon {
+  font-size: var(--font-xl);
+}
+
+.navbar-links {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.navbar-links a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: var(--font-base);
+  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+}
+
+.navbar-links a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* This class gets added automatically by routerLinkActive */
+.navbar-links a.active-link {
+  color: white;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+}

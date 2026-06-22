@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <span class="logo-icon">👨‍💼</span>
+    <span class="logo-text" routerLink="/dashboard">EMS</span>
+  </div>
+
+  <div class="navbar-links">
+    <a
+      routerLink="/employees"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      Employees
+    </a>
+
+    <a routerLink="/dashboard" routerLinkActive="active-link"> Dashboard </a>
+  </div>
+</nav>
